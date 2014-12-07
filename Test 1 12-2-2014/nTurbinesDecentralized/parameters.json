@@ -1,7 +1,7 @@
 {
 	"FileNumberMapping": [
 		"function(val){",
-		"  return (val - 10) * 5;",
+		"  return (val - 9) * 5;",
 		"}"
 	]
 }
