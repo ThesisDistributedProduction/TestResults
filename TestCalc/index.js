@@ -33,6 +33,7 @@ function writeFileTikzBoxplot(file, objects){
 		xticklabels.push(objects[i].xAxisLabel);
 		
 		boxPlots.push([
+			"%% " + objects[i].fileName,
 			'	\\buildBoxPlot{' + objects[i].cycleTime.median,
 			objects[i].cycleTime.upperQuardant,
 			objects[i].cycleTime.lowerQuardant,
@@ -212,7 +213,7 @@ function createObj(file, parameters, obj){
 
 		var newObj = {
 			"xAxisLabel": xAxisLabel,
-			"cycledata.file": file,
+			"fileName": file,
 			"xAxisType": parameters.type,
 			"cycleTime": cycledata,
 			"cacheData": cacheData
