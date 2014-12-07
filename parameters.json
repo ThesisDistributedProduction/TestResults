@@ -1,0 +1,11 @@
+{
+	"FileNumberMapping": [
+		"function(val){",
+		"  return (val + 1) * 5;",
+		"}"
+	],
+
+	"msleepTurbines": 50,
+
+	"type": "nTurbines"
+}
