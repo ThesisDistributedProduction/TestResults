@@ -32,8 +32,8 @@ function writeFileTikzBoxplot(file, objects){
 		xIndexes.push(i + 1);
 		xticklabels.push(objects[i].xAxisLabel);
 		
+		boxPlots.push("%% " + objects[i].fileName);
 		boxPlots.push([
-			"%% " + objects[i].fileName,
 			'	\\buildBoxPlot{' + objects[i].cycleTime.median,
 			objects[i].cycleTime.upperQuardant,
 			objects[i].cycleTime.lowerQuardant,
@@ -239,7 +239,7 @@ function processFiles(files, parameters) {
 	};
 
 	function callback(obj){
-		if(--obj.i > 0){
+		if(--obj.i >= 0){
 			createObj(files[obj.i], parameters, obj).then(callback);
 		}else{
 			obj.results = obj.results.sort(function(a, b){
