@@ -1,14 +1,16 @@
+
 clc;
 clear all;
 close all;
 
+NumberOfSampelsToUse = 1000;
 rootFolder = '/home/stefan/work/TestResults/';
-folder = [rootFolder 'Test4_Centralized_success_12-4-2014_2024'];
-
-cen = 'CentralizedLog';
+folder = [rootFolder 'Test7_Centralized_12-13-2014_1623'];
 
 fileList = java.util.LinkedList;
 li=fileList.listIterator;
+li.add('/CentralizedLog0.csv');
+li.add('/CentralizedLog1.csv');
 li.add('/CentralizedLog2.csv');
 li.add('/CentralizedLog3.csv');
 li.add('/CentralizedLog4.csv');
@@ -27,7 +29,6 @@ li.add('/CentralizedLog16.csv');
 li.add('/CentralizedLog17.csv');
 li.add('/CentralizedLog18.csv');
 li.add('/CentralizedLog19.csv');
-li.add('/CentralizedLog20.csv');
 
 s = fileList.size();
 
@@ -38,18 +39,19 @@ for n = 0:s-1
     t = csvread(file,1,2);
     t = t(:,1);
     t = t / 1000000;
-    t = t(1:450);
+    t = t(1:NumberOfSampelsToUse);
     X = [X t];
 end
 
+figure
 boxplot(X)
-matlab2tikz('results/Test4_nTurbines.tex')
+matlab2tikz('results/Test7_nTurbines.tex')
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 clc;
-clear all;
+
 
 rootFolder = '/home/stefan/work/TestResults/';
 folder = [rootFolder 'Test5_Decentralized_success_12-4-2014_2100/nTurbines'];
@@ -86,7 +88,7 @@ for n = 0:s-1
     t = csvread(file,1,7);
     t = t(:,1);
     t = t / 1000000;
-    t = t(1:450);
+    t = t(1:NumberOfSampelsToUse);
 %     t = t(1:14000);
     X = [X t];
 end
@@ -98,7 +100,6 @@ matlab2tikz('results/Test5_nTurbines.tex')
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clc;
-clear all;
 
 rootFolder = '/home/stefan/work/TestResults/';
 folder = [rootFolder 'Test5_Decentralized_success_12-4-2014_2100/nSleepTime'];
@@ -121,7 +122,7 @@ for n = 1:s
     t = csvread(file,1,7);
     t = t(:,1);
     t = t / 1000000;
-    t = t(1:450);
+    t = t(1:NumberOfSampelsToUse);
 %     t = t(1:50000);
     X = [X t];
 end
@@ -132,7 +133,6 @@ matlab2tikz('results/Test5_nCycleTime.tex')
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clc;
-clear all;
 
 rootFolder = '/home/stefan/work/TestResults/';
 folder = [rootFolder 'Test6_Decentralized_12-7-2014_1327/nCycleTime'];
@@ -156,7 +156,7 @@ for n = 1:s
     t = csvread(file,1,7);
     t = t(:,1);
     t = t / 1000000;
-    t = t(1:450);
+    t = t(1:NumberOfSampelsToUse);
 %     t = t(1:50000);
     X = [X t];
 end
